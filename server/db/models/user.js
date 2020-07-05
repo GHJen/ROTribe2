@@ -16,6 +16,23 @@ const User = db.define('user', {
       return () => this.getDataValue('password')
     }
   },
+  first: {
+    type: Sequelize.STRING,
+    validate: {
+      notEmpty: true
+    }
+  },
+  last: {
+    type: Sequelize.STRING,
+    validate: {
+      notEmpty: true
+    }
+  },
+  imgUrl: {
+    type: Sequelize.STRING,
+    defaultValue:
+      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngfuel.com%2Ffree-png%2Fbjfvt&psig=AOvVaw2isLlq7WCGsXr6w0PB1xvO&ust=1586873447901000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiT37nK5egCFQAAAAAdAAAAABAJ'
+  },
   salt: {
     type: Sequelize.STRING,
     // Making `.salt` act like a function hides it when serializing to JSON.
@@ -36,6 +53,15 @@ module.exports = User
  */
 User.prototype.correctPassword = function(candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
+}
+User.prototype.changeFirst = function(first) {
+  this.first = String(first)
+}
+User.prototype.changeLast = function(last) {
+  this.last = String(last)
+}
+User.prototype.changeImg = function(url) {
+  this.imgUrl = String(url)
 }
 
 /**
