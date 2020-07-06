@@ -13,23 +13,39 @@ const AuthForm = props => {
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
+          <label htmlFor="text-field-hero-input">Email</label>
+          <input className="mdc-text-field__input" name="email" type="text" />
+          <div className="mdc-line-ripple" />
         </div>
         <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
+          <label htmlFor="text-field-hero-input">Password</label>
+          <input
+            className="mdc-text-field__input"
+            name="password"
+            type="password"
+          />
+          <div className="mdc-line-ripple" />
         </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
+        <button type="submit" className="mdc-button foo-button">
+          <div
+            style={{
+              paddingTop: '15pt',
+              marginTop: '0pt',
+              width: '70pt',
+              paddingBottom: '0pt'
+            }}
+            className="mdc-button__ripple"
+          >
+            {displayName}
+          </div>
+          <span className="mdc-button__label" />
+        </button>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <a className="mdc-button foo-button" href="/auth/google">
+        <div className="mdc-button__ripple" />
+        {displayName} with Google
+      </a>
     </div>
   )
 }

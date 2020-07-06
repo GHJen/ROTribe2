@@ -55,6 +55,14 @@ export const logout = () => async dispatch => {
     console.error(err)
   }
 }
+export const profChange = newObj => async dispatch => {
+  try {
+    await axios.put(`/api/users/${newObj.id}`, newObj)
+    dispatch(me())
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 /**
  * REDUCER
