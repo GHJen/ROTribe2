@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
-module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
@@ -15,3 +14,17 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+router.put('/:userId', async (req, res, next) => {
+  try {
+    let user = await User.findByPk(req.user.id)
+    user.first = req.body.first
+    user.last = req.body.last
+    user.email = req.body.email
+    await user.save()
+    res.json(user)
+  } catch (err) {
+    next(err)
+  }
+})
+
+module.exports = router
