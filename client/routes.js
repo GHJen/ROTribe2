@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
+import {Login, Signup, UserHome, UserEntries, AllLessons} from './components'
+import CreateEntry from './components/CreateEntry'
+import UserPrompts from './components/UserPrompts'
 import {me} from './store'
 
 /**
@@ -15,7 +17,6 @@ class Routes extends Component {
 
   render() {
     const {isLoggedIn} = this.props
-
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
@@ -24,7 +25,12 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+            <Route exact path="/" component={UserHome} />
             <Route path="/home" component={UserHome} />
+            <Route exact path="/entries" component={UserEntries} />
+            <Route path="/entries/create" component={CreateEntry} />
+            <Route path="/lessons" component={AllLessons} />
+            <Route path="/prompts" component={UserPrompts} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
