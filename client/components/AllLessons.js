@@ -46,7 +46,7 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(UserEntries)
+export default connect(mapState, mapDispatch)(AllLessons)
 
 /**
  * PROP TYPES
