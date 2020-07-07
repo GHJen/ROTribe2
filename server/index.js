@@ -100,7 +100,7 @@ const createApp = () => {
 
   // sends index.html
   app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'bundle.js'))
+    res.sendFile(path.join(__dirname, '..', 'public/bundle.js'))
   })
 
   // error handling endware
