@@ -105,7 +105,6 @@
     "supertest": "^4.0.2",
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0",
-    "heroku-postbuild": "webpack -p",
     "yaml": "^1.6.0"
   }
 }
