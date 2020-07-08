@@ -1,4 +1,5 @@
 const isDev = process.env.NODE_ENV === 'development'
+const path = require('path')
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -7,8 +8,9 @@ module.exports = {
     './client/index.js'
   ],
   output: {
-    path: `${__dirname}./public`,
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/public/'
   },
   resolve: {
     extensions: ['.js', '.jsx']
