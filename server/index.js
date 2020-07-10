@@ -100,11 +100,7 @@ const createApp = () => {
 
   // sends index.html
   app.use('*', (req, res) => {
-    if (process.env.NODE_ENV !== 'production') {
-      res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-    } else {
-      res.sendFile(path.join(__dirname, '..', 'public'))
-    }
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
 
   // error handling endware
