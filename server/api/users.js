@@ -1,7 +1,16 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
 
-router.get('/', async (req, res, next) => {
+const checkIfAdmin = (req, res, next) => {
+  if (req.user === undefined || req.user.email !== 'jen@fakemail.com') {
+    const error = new Error('illegal action')
+    error.status = 401
+    return next(error)
+  }
+  next()
+}
+
+router.get('/', checkIfAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though

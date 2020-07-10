@@ -2,16 +2,40 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+// import {Button} from 'material-ui'
 
 /**
  * COMPONENT
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
+        {name === 'login' ? (
+          ''
+        ) : (
+          <div>
+            <div>
+              <label htmlFor="text-field-hero-input">First Name </label>
+              <input
+                className="mdc-text-field__input"
+                name="first"
+                type="text"
+              />
+              <div className="mdc-line-ripple" />
+            </div>
+            <div>
+              <label htmlFor="text-field-hero-input">Last Name</label>
+              <input
+                className="mdc-text-field__input"
+                name="last"
+                type="text"
+              />
+              <div className="mdc-line-ripple" />
+            </div>
+          </div>
+        )}
         <div>
           <label htmlFor="text-field-hero-input">Email</label>
           <input className="mdc-text-field__input" name="email" type="text" />
@@ -50,13 +74,6 @@ const AuthForm = props => {
   )
 }
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 const mapLogin = state => {
   return {
     name: 'login',
@@ -80,7 +97,13 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      if (formName === 'login') {
+        dispatch(auth(email, password, formName))
+      } else {
+        const first = evt.target.first.value
+        const last = evt.target.last.value
+        dispatch(auth(email, password, formName, first, last))
+      }
     }
   }
 }

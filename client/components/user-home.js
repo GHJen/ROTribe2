@@ -51,10 +51,10 @@ export class UserHome extends React.Component {
         ) : (
           <></>
         )}
-        {/* <Link className="mdc-button foo-button" to="/entries">
-            <div className="mdc-button__ripple"></div>
-            <span className="mdc-button__label">Journal</span>
-          </Link> */}
+        <Link className="mdc-button foo-button" to="/entries">
+          <div className="mdc-button__ripple" />
+          <span className="mdc-button__label">Journal</span>
+        </Link>
       </div>
     )
   }
