@@ -3,10 +3,8 @@ const {Prompts, User} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
-    if (req.user && req.user.id === 1) {
-      const prompts = await Prompts.findAll()
-      res.json(prompts)
-    } else res.json('What are you after here?')
+    const prompts = await Prompts.findAll()
+    res.json(prompts)
   } catch (err) {
     next(err)
   }
