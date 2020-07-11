@@ -49,7 +49,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
                     </span>
                     <span className="mdc-tab__ripple" />
                   </Link>
-                  <Link
+                  {/* <Link
                     to="/lessons"
                     className="mdc-tab mdc-tab--active"
                     role="tab"
@@ -63,7 +63,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
                       <span className="mdc-tab-indicator__content mdc-tab-indicator__content--underline" />
                     </span>
                     <span className="mdc-tab__ripple" />
-                  </Link>
+                  </Link> */}
                   <Link
                     to="/prompts"
                     className="mdc-tab mdc-tab--active"

@@ -30,7 +30,7 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
             <Route exact path="/entries" component={UserEntries} />
             <Route path="/entries/create" component={CreateEntry} />
-            <Route path="/lessons" component={AllLessons} />
+            {/* <Route path="/lessons" component={AllLessons} /> */}
             <Route path="/prompts" component={UserPrompts} />
           </Switch>
         )}
